@@ -5,5 +5,7 @@ edition = "2021"
 
 [dependencies]
 anyhow = "1.0.95"
-mistralrs = { git = "https://github.com/EricLBuehler/mistral.rs.git" }
+# mistralrs = { git = "https://github.com/EricLBuehler/mistral.rs.git" }
 reqwest = "0.12.12"
+openai-api-rs = "5.2.4"
+tokio = "*"
