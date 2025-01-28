@@ -11,14 +11,14 @@ tokenizer = AutoTokenizer.from_pretrained("parler-tts/parler-tts-mini-v1")
 
 def speak(prompt: str, output_file: str = "parler_tts_out.wav") -> None:
     description = "Laura's voice is monotone, with a very close recording that almost has no background noise."
-    
     input_ids = tokenizer(description, return_tensors="pt").input_ids.to(device)
     prompt_input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
-
     generation = model.generate(input_ids=input_ids, prompt_input_ids=prompt_input_ids)
     audio_arr = generation.cpu().numpy().squeeze()
+    
     sf.write(output_file, audio_arr, model.config.sampling_rate)
 
+#! For test purposes only
 def main():
     import sys
     if len(sys.argv) < 2:
